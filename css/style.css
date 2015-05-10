@@ -1,0 +1,357 @@
+$anthracite: #262732;
+$blue: #66B0CB;
+$green: #7BCC70;
+
+$border-radius-base:        3px;
+$border-radius-large:       20px;
+$border-radius-small:       1px;
+
+//** `<input>` background color
+$input-bg:                       transparent;
+//** `<input disabled>` background color
+
+//** Text color for `<input>`s
+$input-color:                    $anthracite;
+//** `<input>` border color
+$input-border:                   $blue;
+
+// TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
+//** Default `.form-control` border radius
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+$input-border-radius:            $border-radius-base;
+//** Large `.form-control` border radius
+$input-border-radius-large:      $border-radius-large;
+//** Small `.form-control` border radius
+$input-border-radius-small:      $border-radius-small;
+
+//** Border color for inputs on focus
+$input-border-focus:             $blue;
+
+//** Placeholder text color
+$input-color-placeholder:        $green;
+
+//** Default `.form-control` height
+$input-height-base:              50px;
+//** Large `.form-control` height
+$input-height-large:             60px;
+//** Small `.form-control` height
+$input-height-small:             40px;
+
+//** `.form-group` margin
+$form-group-margin-bottom:       50px;
+
+
+//** Border color for textual input addons
+$input-group-addon-border-color: $input-border !default;
+
+//** Disabled cursor for form controls and buttons.
+$cursor-disabled:                not-allowed !default;
+$input-color-placeholder: $green;
+$font-size-h6: 18px;
+
+$font-size-base: 14px;
+$font-size-large: round(($font-size-base * 1.142857143)); // 16px
+$font-size-small: round(($font-size-base * 0.857142857)); // 12px
+$input-height-base: 50px;
+$zindex-modal: 1050 !default;
+
+
+
+$formGroup_paddingTop-_animated: 30px;
+$formGroup_transitionDuration: 0.3s;
+$formGroup_transitionTimingFunction: ease;
+$formControl_borderWidth: 2px;
+
+$formLabel_lineHeight: 19px;
+$formLabel_color-_animated: $blue;
+$formLabel_color-_animated-_active: $input-color-placeholder;
+
+
+// Corner info
+// ===========
+
+$cornerInfo-caption_color: white;
+$cornerInfo-caption_maxWidth: 410px;
+$cornerInfo-caption_fontSize: 12px;
+
+$cornerInfo-caption_marginVertical: 19px;
+$cornerInfo-caption_marginHorizontal: 30px;
+
+$cornerInfo-arrow_height: 41px;
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: $input-height-base; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+  font-size: $font-size-base;
+  color: $input-color;
+  background-color: $input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid $input-border;
+  border-radius: $input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  @include transition(border-color ease-in-out .15s, box-shadow ease-in-out .15s);
+}
+
+
+textarea {
+    max-width: 100%;
+}
+
+label {
+    margin-bottom: 0;
+    font-weight: 700;
+    color: $input-color-placeholder;
+    text-align: center;
+    display: block;
+    font-size: $font-size-large;
+    line-height: $formLabel_lineHeight;
+    margin-bottom: $formGroup_paddingTop-_animated - $formLabel_lineHeight;
+}
+
+.form-control {
+    text-align: center;
+    font-size: $font-size-large;
+    z-index: 1;
+    position: relative;
+    border-width: $formControl_borderWidth;
+
+    &,
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.form-group {
+    position: relative;
+
+    label,
+    .form-control {
+        @include transition-duration ($formGroup_transitionDuration);
+        @include transition-timing-function ($formGroup_transitionTimingFunction);
+    }
+
+    label {
+        position: relative;
+        @include transition-property (transform, color);
+    }
+
+    .form-control {
+        @include transition-property (border-width, background-color);
+    }
+
+    &.-active,
+    &.-focus {
+        .form-control {
+            border-width: 1px;
+            background-color: white;
+        }
+    }
+
+    &.-animated {
+        padding-top: $formGroup_paddingTop-_animated;
+
+        label {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            z-index: 0;
+            margin-bottom: 0;
+            color: $formLabel_color-_animated;
+            @include transform (translateY($formGroup_paddingTop-_animated + ($input-height-base / 2) - ($formLabel_lineHeight / 2)));
+        }
+
+        &.-active,
+        &.-focus {
+            label {
+                color: $formLabel_color-_animated-_active;
+                @include transform (translateY(0));
+            }
+        }
+    }
+
+    &.-overlayed {
+        &:before {
+            content: "";
+            position: fixed;
+            background-color: black;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            visibility: hidden;
+            opacity: 0;
+            @include transition-property (opacity);
+            @include transition-duration ($formGroup_transitionDuration);
+            @include transition-timing-function ($formGroup_transitionTimingFunction);
+        }
+
+        &.-focus {
+            &:before {
+                z-index: $zindex-modal;
+            }
+
+            &:before {
+                visibility: visible;
+                opacity: 0.5;
+            }
+
+            label,
+            .form-control {
+                z-index: $zindex-modal + 1;
+            }
+
+        }
+    }
+}
+
+
+// form-caption
+// ============
+
+.form-caption {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    background-repeat: no-repeat;
+    color: $cornerInfo-caption_color;
+    max-width: $cornerInfo-caption_maxWidth;
+    font-size: $cornerInfo-caption_fontSize;
+  font-style: italic;
+
+    // default position is top-left
+
+    &,
+    &.-topLeft,
+    &.-leftTop,
+    &.-topRight,
+    &.-rightTop { // All the top
+        top: $formGroup_paddingTop-_animated + $cornerInfo-caption_marginVertical;
+        bottom: auto;
+        padding-bottom: $cornerInfo-arrow_height;
+        padding-top: 0;
+        background-position: center bottom;
+    }
+
+    &.-bottomRight,
+    &.-rightBottom,
+    &.-bottomLeft,
+    &.-leftBottom { // All the bottom
+        bottom: $formGroup_paddingTop-_animated - $cornerInfo-caption_marginVertical;
+        top: auto;
+        padding-top: $cornerInfo-arrow_height;
+        padding-bottom: 0;
+        background-position: center top;
+    }
+
+    &,
+    &.-topLeft,
+    &.-leftTop,
+    &.-bottomLeft,
+    &.-leftBottom { // All the left
+        left: $cornerInfo-caption_marginHorizontal * -1;
+        right: auto;
+    }
+
+    &.-topRight,
+    &.-rightTop,
+    &.-bottomRight,
+    &.-rightBottom { // All the right
+        right: $cornerInfo-caption_marginHorizontal * -1;
+        left: auto;
+    }
+
+    &,
+    &.-topLeft,
+    &.-leftTop {
+        @include transform (translateX(-50%) translateY(-100%));
+    }
+
+    &.-topRight,
+    &.-rightTop {
+        @include transform (translateX(50%) translateY(-100%));
+    }
+
+    &.-bottomRight,
+    &.-rightBottom {
+        @include transform (translateX(50%) translateY(100%));
+    }
+
+    &.-bottomLeft,
+    &.-leftBottom {
+        @include transform (translateX(-50%) translateY(100%));
+    }
+
+    &,
+    &.-topLeft,
+    &.-leftTop,
+    &.-topRight,
+    &.-rightTop
+    &.-bottomRight,
+    &.-rightBottom,
+    &.-bottomLeft,
+    &.-leftBottom {
+        @media (max-width: 991px) {
+            &,
+            &.-touchTop,
+            &.-touchBottom {
+                left: 50%;
+                right: auto;
+            }
+
+            &,
+            &.-touchTop {
+                top: 0 - $cornerInfo-caption_marginVertical;
+                bottom: auto;
+                padding-bottom: $cornerInfo-arrow_height;
+                padding-top: 0;
+                @include transform (translateX(-50%) translateY(-100%));
+                background-position: center bottom;
+            }
+
+            &.-touchBottom {
+                bottom: 0 - $cornerInfo-caption_marginVertical;
+                top: auto;
+                padding-bottom: 0;
+                padding-top: $cornerInfo-arrow_height;
+                @include transform (translateX(-50%) translateY(100%));
+                background-position: center top;
+            }
+        }
+    }
+}
+
+.form-group {
+    &.-focus {
+        .form-caption {
+            opacity: 1;
+            visibility: visible;
+            z-index: $zindex-modal;
+        }
+    }
+}
+
+.panel-footer {
+    pre {
+        padding: 0;
+        border-width: 0;
+        margin-bottom: 0;
+
+        + pre {
+            margin-top: 20px;
+        }
+    }
+}
+
+.showcase {
+    margin-bottom: 60px;
+
+    .form-group {
+        margin-bottom: 0;
+
+        + .form-group {
+            margin-top: 50px;
+        }
+    }
+}

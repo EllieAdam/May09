@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.scss">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container" id="form">
+  <h2 class="h2">Bootstrap's animated & overlayed form elements</h2>
+
+  <p>
+    The base about form elements the structure still the bootstrap structure, with a <code>.form-group</code> composed of a <code>label</code> and a <code>input.form-control</code>.
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="#form-control-1">Example 1</label>
+        <input class="form-control" id="form-control-1" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group"&gt;<br>    &lt;label&gt;Example 1&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    For using the animated version, just add the variant class <code>.-animated</code> on the <code>.form-group</code> element
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -animated">
+        <label for="#form-control-2">Example 2</label>
+        <input class="form-control" id="form-control-2" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -animated"&gt;<br>    &lt;label&gt;Example 2&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    To put an global overlay on the focus of the <code>.form-control</code>, use the variant class <code>.-overlayed</code>.
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -overlayed">
+        <label for="#form-control-3">Example 3</label>
+        <input class="form-control" id="form-control-3" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -overlayed"&gt;<br>    &lt;label&gt;Example 3&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    You can of course use <code>.-animated</code> and <code>.-overlayed</code> on the same element
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -animated -overlayed">
+        <label for="#form-control-4">Example 4</label>
+        <input class="form-control" id="form-control-4" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;label&gt;Example 4&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    If you need to you can add a form-caption that will appear when the input is focused. You need to add a third element into the <code>.form-group</code> with the class code{.form-caption} and then whatever you want into.
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption">Lorem ipsum</div>
+        <label for="#form-control-5">Example 5</label>
+        <input class="form-control" id="form-control-5" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 5&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    You can choose the position of the form-caption (the 4 corner) with the variant classes <code>.-topLeft</code>, <code>.-topRight</code>, <code>.-bottomRight</code>, <code>.-bottomLeft</code>. For Mobile and Tablet (xs and sm viewport), you have the
+    choice between 2 position top or bottom with the respective classes <code>-touchTop</code> and <code>-touchBottom</code>
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption -topLeft -touchTop">Lorem ipsum</div>
+        <label for="#form-control-61">Example 6.1</label>
+        <input class="form-control" id="form-control-61" type="text">
+      </div>
+
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption -topRight -touchBottom">Lorem ipsum</div>
+        <label for="#form-control-62">Example 6.2</label>
+        <input class="form-control" id="form-control-62" type="text">
+      </div>
+
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption -bottomRight -touchTop">Lorem ipsum</div>
+        <label for="#form-control-63">Example 6.3</label>
+        <input class="form-control" id="form-control-63" type="text">
+      </div>
+
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption -bottomLeft -touchBottom">Lorem ipsum</div>
+        <label for="#form-control-64">Example 6.4</label>
+        <input class="form-control" id="form-control-64" type="text">
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption -topLeft"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 6.1&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption -topRight"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 6.2&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption -bottomRight"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 6.3&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption -bottomLeft"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 6.4&lt;/label&gt;<br>    &lt;input class="form-control" type="text"&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+
+  <p>
+    Works with textarea too !
+  </p>
+
+  <div class="panel panel-default showcase">
+    <div class="panel-body">
+      <div class="form-group -animated -overlayed">
+        <div class="form-caption">Lorem ipsum</div>
+        <label for="#form-control-7">Example 7</label>
+        <textarea class="form-control" id="form-control-7" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <pre>&lt;div class="form-group -animated -overlayed"&gt;<br>    &lt;div class="form-caption"&gt;lorem ipsum&lt;/div&gt;<br>    &lt;label&gt;Example 7&lt;/label&gt;<br>    &lt;textarea class="form-control" cols="30" rows="10"&gt;&lt;/textarea&gt;<br>&lt;/div&gt;</pre>
+    </div>
+  </div>
+</div>
+</body>
+</html>
